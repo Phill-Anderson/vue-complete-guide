@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+header {
+  padding: 40px;
+  margin-bottom: 10px;
+  color: #fff;
+  background-color: green;
+}
+#styling {
+  width: 800px;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 1px 1px #888888;
+}
+.demo {
+  height: 100px;
+  margin-bottom: 10px;
+  border: 2px dashed grey;
+}
+.active {
+  border-color: red;
+  background-color: darksalmon;
+}

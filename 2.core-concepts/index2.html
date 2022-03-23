@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A First App</title>
+    <title>Data binding + Event binding</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="app">
+    <div id="app2">
       <div>
         <!-- xss attack -аас хамгаалахын тулд {{ var }} дотор хувьсагчийг бичиж өгнө  -->
         <label for="goal">{{ courseGoal }}</label>
@@ -19,8 +19,8 @@
           type="text"
           id="goal"
           v-model="enteredValue"
+          v-on:keyup.enter="addGoal"
           placeholder="Таск оруулна уу"
-          style="margin: 40px 0"
         />
         <button
           v-on:click="addGoal"
@@ -30,22 +30,35 @@
         </button>
       </div>
       <ul>
-        <li v-for="goal in goals">
+        <li v-for="(goal, index) in goals">
           <p>
             {{ goal }}
-            <button class="button button--action" v-on:click="deleteGoal">
+            <button
+              class="button button--action"
+              v-on:click="deleteGoal(index)"
+            >
               устгах
             </button>
           </p>
         </li>
       </ul>
       <hr style="margin: 40px 0" />
-      <div>{{ isLogin}}</div>
-      <div>{{ user.name }}</div>
-      <a v-bind:href="linkHref">link</a><br />
       <button class="button button--purple">Нийт: {{ counter }}</button>
+      <!-- data-binding 1 -->
+      <input type="text" v-bind:value="confirmedName" v-on:input="setValue" />
+      <button v-on:click="resetInput('confirmedName')">
+        Clear input - {{confirmedName}}
+      </button>
+      <!--data-binding 2-->
+      <input type="text" v-model="user.name" v-on:input="setUsername" />
+      <button v-on:click="resetInput('userName')">
+        Clear input - {{user.name}}
+      </button>
+      <hr style="margin: 40px 0" />
+      <input type="text" v-on:input="setName" />
+      {{ displayFullName() }}
     </div>
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="app.js"></script>
+    <script src="app2.js"></script>
   </body>
 </html>

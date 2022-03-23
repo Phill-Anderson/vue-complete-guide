@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="dynamicStyle.css" />
+  </head>
+  <body>
+    <div id="dynamicStyle">
+      <header>
+        <h1>Vue Dynamic Styling</h1>
+      </header>
+      <section id="styling">
+        <!--vue style бичих сонгодог хэлбэр-->
+        <div
+          class="demo"
+          :class="{active:boxASelected}"
+          :style="{borderColor: boxASelected ? 'red': '#ccc'}"
+          @click="boxSelected('A')"
+        ></div>
+        <!--computed function - оор дамжуулж style class - ийг тавьж өгч болно-->
+        <div
+          class="demo"
+          :class="boxBClasses"
+          :style="{borderColor: boxBSelected ? 'red': '#ccc'}"
+          @click="boxSelected('B')"
+        ></div>
+        <!--array хэлбэртэй vue style-->
+        <div
+          :class="[ 'demo', {  active: boxCSelected } ]"
+          @click="boxSelected('C')"
+        ></div>
+        <!--style - ийг бас ингэж бичиж болно-->
+        <div
+          :class="boxDSelected? 'demo active':'demo'"
+          :style="{borderColor: boxDSelected ? 'red': '#ccc'}"
+          @click="boxSelected('D')"
+        ></div>
+      </section>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="dynamicStyle.js"></script>
+  </body>
+</html>

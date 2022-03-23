@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <!-- xss attack -аас хамгаалахын тулд {{ var }} дотор хувьсагчийг бичиж өгнө  -->
+        <label for="goal">{{ courseGoal }}</label>
+        <!-- dangeriously inner html -->
+        <span v-html="outputGoal()"></span>
+        <!-- guarded innerHTML data -->
+        <!--  <p>{{ outputGoal() }}</p> -->
+        <input
+          type="text"
+          id="goal"
+          v-model="enteredValue"
+          placeholder="Таск оруулна уу"
+        />
+        <button
+          v-on:click="addGoal"
+          class="button button--action button--purple"
+        >
+          Нэмэх
+        </button>
+      </div>
+      <ul>
+        <li v-for="goal in goals">
+          <p>
+            {{ goal }}
+            <button class="button button--action" v-on:click="deleteGoal">
+              устгах
+            </button>
+          </p>
+        </li>
+      </ul>
+      <hr style="margin: 40px 0" />
+      <div>{{ isLogin ? 'unen': 'hudal'}}</div>
+      <a v-bind:href="linkHref">энэ бол линк</a><br />
+      <button class="button button--purple">Нийт: {{ counter }}</button>
+      <button class="button button--purple" v-once>
+        ганц удаа рендэр хийгдэх элэмэнт / v-once /: {{ counter }}
+      </button>
+
+      <hr style="margin: 40px 0" />
+      <button v-on:click="addNumber(2, 5)" class="button button--purple">
+        2+5 ={{ totalNumber === 0? '?' : totalNumber }}
+      </button>
+      <hr style="margin: 40px 0" />
+      <input
+        type="text"
+        id="goal"
+        placeholder="Нэр оруулна уу / input onChange /"
+        v-model="name"
+        v-on:input="setName"
+      />
+      <p>written name: {{ name }}</p>
+      <input
+        type="text"
+        id="goal"
+        placeholder="Нэр оруулна уу / input onChange
+      /"
+        v-on:input="setFullName($event,'Anderson')"
+      />
+      <p>written name: {{ fullName }}</p>
+
+      <hr style="margin: 40px 0" />
+      <h5>event modifiers:</h5>
+      <form v-on:submit.prevent="submitForm">
+        <input
+          type="text"
+          placeholder="үсэг бичих үед ажиллана"
+          v-on:input="setName"
+          v-on:keyup="confirmInput"
+        />
+        <input
+          type="text"
+          placeholder="enter товч дарах үед ажиллана"
+          v-on:input="setName"
+          v-on:keyup.enter="confirmInput"
+        />
+        <input
+          type="text"
+          placeholder="page down товч дарах үед ажиллана"
+          v-on:input="setName"
+          v-on:keyup.page-down="confirmInput"
+        />
+        <input
+          type="text"
+          placeholder="ctrl товч дарах үед ажиллана"
+          v-on:input="setName"
+          v-on:keyup.ctl="confirmInput"
+        />
+        <button>sign up: {{ confirmedName }}</button>
+      </form>
+
+      <button
+        class="button button--action"
+        v-on:click.left="printText('mouse 1 daragdlaa')"
+      >
+        <!-- v-on:click.right -->
+        <!-- v-on:click.middle -->
+        mouse 1 - ийг дар
+      </button>
+      <button
+        class="button button--action"
+        v-on:click.middle="printText('mouse 2 daragdlaa')"
+      >
+        mouse 2 - ийг дар
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

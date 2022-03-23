@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computed Properties</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app3">
+      <hr style="margin: 40px 0" />
+      <input type="text" v-on:input="setName" />
+      <h3>name: {{ name }}</h3>
+      <input type="text" v-on:input="setLastName" />
+      {{ computedFullName }} {{ computedLastName }}
+      <button
+        class="button button--action button--action-purple"
+        v-on:click="add"
+      >
+        + 10
+      </button>
+      <button
+        class="button button--action button--action-purple"
+        v-on:click="sub"
+      >
+        - 10
+      </button>
+      <p>{{ counter }}</p>
+
+      <!--v-bind v-on shortcuts-->
+      <button @click="add" class="button button--action button--purple">
+        v-on click shorthand
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app3.js"></script>
+  </body>
+</html>
