@@ -1,1 +1,13 @@
-1. state өөрчлөгдөхөд vue нь real DOM - ийг update хийнэ.
+1. state өөрчлөгдөхөд vue нь virtual DOM - оор дамжиж real DOM - ийг update хийнэ.
+2. refs - ийг хэрэглэж болно / console.dir(refsObject) /
+3. state өөрчлөгдөхөд vue нь бүгдийг re-render хийхгүй.
+4. DOM дээр байгаа хуучин утгыг шинээр өөрчлөгдсөн утгатай харьцуулаад өөрчлөгдсөн бол шууд update  хийнэ. 
+5. Ингэхдээ virtual DOM - д өөрчлөлт орсон эсэхийг харьцуулаад, өөрчлөлт орсон бол real DOM - ийг re-render хийнэ.
+6. Virtual DOM нь зөвхөн memory дээр үүсдэг.
+
+
+app.unmout() - нь ховорхон хэрэглэгдэнэ.
+
+app.component('компонэнтийн_нэр', configObject)
+
+
