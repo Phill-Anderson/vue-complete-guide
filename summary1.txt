@@ -11,3 +11,20 @@ app.unmout() - нь ховорхон хэрэглэгдэнэ.
 app.component('компонэнтийн_нэр', configObject)
 
 
+// Vue-cli:
+npm i -g @vue/cli
+
+props:{}  
+props:[]
+
+built-in methods:  
+$refs 
+$emit
+
+// доорхи 2 ойлголтыг заавалчгүй мэдсэн байх хэрэгтэй
+1. Prop Fallthrough 
+2. Binding All Props on a Component
+
+
+provide функц дотор бичигдсэн state - үүд нь props drilling хийхээс сэргийлнэ
+provide дотор бичигдсэн функцийг аливаа child компонэнт дотор хүлээж авахдаа inject - ийг ашиглаж хүлээн авна
